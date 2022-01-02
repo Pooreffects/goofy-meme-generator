@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function App() {
+const memesUrl = `https://meme-api.herokuapp.com/gimme`;
+
+const App: React.FC = () => {
+  const [memes, setMemes] = useState('');
+
+  const getMemes = () => {
+    axios
+      .get(memesUrl)
+      .then((res) => {
+        setMemes(res.data.url);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getMemes();
+  }, []);
+
+  const handleClick = () => {
+    getMemes();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app-hero">
+        <h1>Get Cringy Memes with Dede!</h1>
+        <button onClick={handleClick}>Generate!</button>
+      </div>
+      <div className="meme-container">
+        <img src={memes} alt="Random Memes" />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

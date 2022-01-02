@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: midnightblue;
+}
+
+.app-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+h1 {
+  color: antiquewhite;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+button {
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  color: #1b1b1b;
+  font-weight: bold;
+}
+button:hover {
+  background-color: mediumslateblue;
+}
+
+.meme-container {
+  display: flex;
+  justify-content: center;
+}
+img {
+  width: 400px;
+  height: 400px;
+}
