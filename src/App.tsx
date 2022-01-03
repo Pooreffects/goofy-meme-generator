@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-const memesUrl = `https://meme-api.herokuapp.com/gimme`;
+const memesUrl = `https://api.giphy.com/v1/clips/trending?api_key=${process.env.API_KEY}`;
 
 const App: React.FC = () => {
-  const [memes, setMemes] = useState('');
+  const [memes, setMemes] = useState([]);
 
   const getMemes = () => {
     axios
       .get(memesUrl)
       .then((res) => {
-        setMemes(res.data.url);
+        /* setMemes(res.data.url); */
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -31,9 +32,7 @@ const App: React.FC = () => {
         <h1>Get Cringy Memes with Dede!</h1>
         <button onClick={handleClick}>Generate!</button>
       </div>
-      <div className="meme-container">
-        <img src={memes} alt="Random Memes" />
-      </div>
+      <div className="meme-container"></div>
     </div>
   );
 };
